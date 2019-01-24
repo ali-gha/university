@@ -1,0 +1,16 @@
+<form class="container" [formGroup]="gpaForm" (ngSubmit)="onSave()" novalidate>
+  <mat-label>Add GPA for {{data.studentName}} in {{data.courseName}} course.</mat-label>
+  <mat-divider></mat-divider>
+  <mat-form-field>
+    <input matInput type="number" placeholder="GPA" name="gpa" formControlName="gpa">
+    <span *ngIf="!gpaForm.get('gpa').valid && gpaForm.get('gpa').touched
+      && gpaForm.get('gpa').errors != null && gpaForm.get('gpa').errors['required']">
+      please enter a course GPA!
+    </span>
+  </mat-form-field>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

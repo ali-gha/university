@@ -1,0 +1,58 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="teacherName">
+      <th mat-header-cell *matHeaderCellDef> teacherName </th>
+      <td mat-cell *matCellDef="let element"> {{element.teacherName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> location </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button color="primary" (click)="onEditCourse(element)">
+          <a matTooltip="edit">
+            <mat-icon>edit</mat-icon>
+          </a>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button color="warn" (click)="onDeleteCourse(element)">
+          <a matTooltip="delete">
+            <mat-icon>delete</mat-icon>
+          </a>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row (click)="onRowClick(row)" [ngClass]="{'highlight': selectedRowIndex == row.id}" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<mat-divider></mat-divider>
+<div *ngIf="rowClicked">
+    <mat-label>
+      <h3>
+        Students of selected course
+      </h3>
+    </mat-label>
+  <app-course-students [course]="course" ></app-course-students>
+</div>

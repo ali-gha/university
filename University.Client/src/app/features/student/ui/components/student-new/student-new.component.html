@@ -1,0 +1,23 @@
+<form class="container" [formGroup]="studentNewForm" (ngSubmit)=" onSave()" novalidate>
+  <mat-form-field>
+    <input matInput placeholder="name" name="name" formControlName="name">
+      <span *ngIf="!studentNewForm.get('name').valid && studentNewForm.get('name').touched && studentNewForm.get('name').errors != null &&  studentNewForm.get('name').errors['required']">
+        please enter a userName!
+      </span>
+      <span *ngIf="(studentNewForm.get('name').errors != null &&  studentNewForm.get('name').errors['isExistUserName'])">
+        Student name is already taken.
+      </span>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="age" name="age" formControlName="age" type="number">
+    <span *ngIf="!studentNewForm.get('age').valid && studentNewForm.get('age').touched && studentNewForm.get('age').errors['required']">
+      please enter a age!
+    </span>
+
+  </mat-form-field>
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <button mat-raised-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>

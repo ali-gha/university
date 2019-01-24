@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.8" />
+    <PackageReference Include="AutoMapper" Version="7.0.0"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.0"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0"/>
+  </ItemGroup>
+<ItemGroup>
+    <!-- <ProjectReference Include="..\University.DataLayer\University.DataLayer.csproj" /> -->
+    <ProjectReference Include="..\University.ServiceLayer\University.ServiceLayer.csproj" />
+    <ProjectReference Include="..\University.ViewModels\University.ViewModels.csproj" />
+  </ItemGroup>
+</Project>
